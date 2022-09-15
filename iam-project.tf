@@ -51,6 +51,11 @@ resource "google_project_iam_binding" "roles" {
   depends_on = [
     google_service_account.service_accounts
   ]
+  lifecycle {
+    ignore_changes = [
+      etag
+    ]
+  }
 }
 
 # Custom roles
@@ -77,4 +82,9 @@ resource "google_project_iam_binding" "custom_roles" {
     google_project_service.project,
     google_service_account.service_accounts
   ]
+  lifecycle {
+    ignore_changes = [
+      etag
+    ]
+  }
 }
